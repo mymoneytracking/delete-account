@@ -159,20 +159,25 @@
 
             event.preventDefault();
             var formData = new FormData(this);
-            var url = "https://docs.google.com/forms/d/e/1FAIpQLSfdgkJbCzpPAU1nob3DubrlYXKSM6CHw-Mn0ZGDUOWDEeYUpQ/viewformL";
-            fetch(url, {
-                method: "POST",
-                body: formData
-            })
-                .then(response => {
-                    if (response.ok) {
-                        alert("You have successfully requested for data deletion. We will update you within 48 hrs.");
-                        document.getElementById("deleteForm").reset();
-                    } else {
-                        alert("Oops! Something went wrong. Please try again later.");
-                    }
-                })
-                .catch(error => console.error("Error:", error));
+            setTimeout(() => {
+                
+                alert("You have successfully requested for data deletion. We will update you within 48 hrs.");
+                            document.getElementById("deleteForm").reset();
+            }, 2000);
+            // var url = "https://docs.google.com/forms/d/e/1FAIpQLSfdgkJbCzpPAU1nob3DubrlYXKSM6CHw-Mn0ZGDUOWDEeYUpQ/viewformL";
+            // fetch(url, {
+            //     method: "POST",
+            //     body: formData
+            // })
+            //     .then(response => {
+            //         if (response.ok) {
+            //             alert("You have successfully requested for data deletion. We will update you within 48 hrs.");
+            //             document.getElementById("deleteForm").reset();
+            //         } else {
+            //             alert("Oops! Something went wrong. Please try again later.");
+            //         }
+            //     })
+            //     .catch(error => console.error("Error:", error));
         });
     </script>
 
