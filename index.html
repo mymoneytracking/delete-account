@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Deletion Request</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        form {
+            margin: 20px auto;
+            max-width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        img {
+            display: block;
+            margin: 0 auto 20px;
+            border-radius: 20%;
+            width: 250px;
+            height: 250px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <img src="./appstore.png" alt="Company Logo">
+        <h1>My Money Tracking - Delete User Details</h1>
+    </header>
+
+    <form id="deleteForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <input type="submit" value="Submit">
+        <p>
+            <small>
+                <strong>Note:</strong> By submitting this form, you are requesting to delete your data from our
+                database. We will update you within 48 hrs after verifying your request and this action cannot be undone.if you have any query please contact us on
+                 <a href="mailto:letConnectTech@gmail.com"> letConnectTech@gmail.com </a>
+
+            </small>
+        </p>
+    </form>
+
+
+    <footer 
+    style="background-color: #333;"
+    >
+        <div class="container"
+    style="background-color: #333;"
+       
+        >
+            <div class="row">
+                <div class="">
+                    <h2 class="footer-heading d-flex">
+                        <span class="icon d-flex align-items-center justify-content-center"><i
+                                class="ion-logo-ionic"></i></span>
+                        About
+                    </h2>
+                    <div style="display: flex;">
+
+                        <div class="ml-3">
+
+                            <p>My Money Tracking is a personal finance management tool that helps you to track your
+                                expenses and income. It is a simple and easy to use tool that helps you to manage your
+                                money.</p>
+                        </div>
+                        <div class="ml-3">
+                            <span class="icon ion-ios-pin"></span><span class="text ml-2">dindori madhya
+                                pradesh,India</span>
+
+                        </div>
+                        <div class="ml-3">
+                            <a href=" tel:+917974909938
+                            "><span class="icon ion-ios-call"></span><span class="text">+917974909938</span></a>
+
+                        </div>
+                        <div class="ml-3">
+                            <a href="mailto:letConnectTech@gmail.com
+                            "><span class="icon ion-ios-send"></span><span
+                                    class="text">letConnectTech@gmail.com</span></a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="row mt-5 pt-4 border-top">
+                <div class="col-md-6 col-lg-8">
+                    <p class="copyright">
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.getElementById("deleteForm").addEventListener("submit", function (event) {
+            var confirmed = confirm('Are you sure you want to delete your data? This action cannot be undone.');
+            if (!confirmed) {
+                event.preventDefault();
+                return;
+            }
+
+            event.preventDefault();
+            var formData = new FormData(this);
+            var url = "https://docs.google.com/forms/d/e/1FAIpQLSfdgkJbCzpPAU1nob3DubrlYXKSM6CHw-Mn0ZGDUOWDEeYUpQ/viewformL";
+            fetch(url, {
+                method: "POST",
+                body: formData
+            })
+                .then(response => {
+                    if (response.ok) {
+                        alert("You have successfully requested for data deletion. We will update you within 48 hrs.");
+                        document.getElementById("deleteForm").reset();
+                    } else {
+                        alert("Oops! Something went wrong. Please try again later.");
+                    }
+                })
+                .catch(error => console.error("Error:", error));
+        });
+    </script>
+
+</body>
+
+</html>
